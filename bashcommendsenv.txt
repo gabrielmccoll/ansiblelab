@@ -1,6 +1,5 @@
 subscriptionId=$(pwsh -c "(Get-AzContext).Subscription.Id")
-clientid=$(pwsh -c "(Get-AzADServicePrincipal -DisplayName
-'ansible').ApplicationId.Guid")
+clientid=$(pwsh -c "(Get-AzADServicePrincipal -DisplayName 'ansible').ApplicationId.Guid")
 secret='<Password>'
 tenantid=$(pwsh -c "(Get-AzContext).Tenant.Id")
 export AZURE_SUBSCRIPTION_ID=$subscriptionId;
