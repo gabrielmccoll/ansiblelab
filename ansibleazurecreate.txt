@@ -1,0 +1,1 @@
+ansible localhost -m azure_rm_resourcegroup -a "name=ansible location=uksouth"

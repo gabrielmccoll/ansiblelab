@@ -1,0 +1,16 @@
+$password = '<Password>'
+$credentials = New-Object Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential -Property @{
+StartDate=Get-Date; EndDate=(Get-Date).AddMonths(3); Password=$password};
+$spSplat = @{
+  DisplayName = 'ansible'
+  PasswordCredential = $credentials
+}
+$sp = New-AzAdServicePrincipal @spSplat
+
+$subId = (Get-AzContext).Subscription.Id
+$roleAssignmentSplat = @{
+  ObjectId = $sp.id;
+  RoleDefinitionName = 'Contributor';
+  Scope = "/subscriptions/$subId"
+}
+New-AzRoleAssignment @roleAssignmentSplat

@@ -1,0 +1,5 @@
+curl https://packages.microsoft.com/config/rhel/7/prod.repo | tee /etc/yum.repos.d/microsoft.repo
+yum install -y powershell
+pwsh 
+Install-Module -Name Az -MinimumVersion 4.7.0
+import-Module Az
